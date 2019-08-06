@@ -1,12 +1,16 @@
-import React from 'react'
-import '../Components/Styles/Errors.css'
-import NotFoundImg from '../Images/404.png'
+import React from "react";
+import "../Components/Styles/Errors.css";
+import NotFoundImg from "../Images/404.png";
+import Typography from "@material-ui/core/Typography";
+import { Container } from "@material-ui/core";
 
 const NotFound = () => (
-    <div className="text-center">
-        <h1 className="Error_Text">Error: 404 Página no encontrada </h1>    
-        <img src={NotFoundImg} alt="404 NotFound" className="Error_Image" />
-    </div>
-)
+  <Container maxWidth="sm" style={{ marginTop: "3rem" }}>
+    <Typography component="h2" variant="h4" className="Error_Text">
+      Error: 404 Página no encontrada
+    </Typography>
+    <img src={NotFoundImg} alt="404 NotFound" className="Error_Image" />
+  </Container>
+);
 
-export default NotFound
+export default NotFound;

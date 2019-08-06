@@ -1,14 +1,17 @@
 import React from 'react';
 import LoginInSide from "./Presentation/LogininSide"
 
-const Login = () => {
+const Login = (props) => {
     const [form, setForm] = React.useState({
         name:"",
         rut:"",
         password:"",
     })
     const [open, setOpen] = React.useState(false)
-
+    const [errorName, setName] = React.useState(false)
+    const [errorRut, setRut] = React.useState(false)
+    const [errorPassword, setPassword] = React.useState(false)
+    
     let handleClose = () => {
         setOpen(false)
     } 
@@ -20,12 +23,20 @@ const Login = () => {
       };
 
       let onSubmit = e=>{
-        e.preventDefault();      
-       
+        e.preventDefault();     
+
+        if(form.name!==""){setName(false)}
+        if(form.rut!==""){setRut(false)}
+        if(form.password!==""){setPassword(false)}
+
         if(form.name !=="" && form.rut !=="" && form.password !=="" ){
-          console.log(form);     
+          console.log(form);   
+          props.history.push('/account')  
         }  
         else{
+          if(form.name === ""){setName(true)}
+          if(form.rut === ""){setRut(true)}
+          if(form.password === ""){setPassword(true)}
           setOpen(true)    
         }
       }
@@ -41,6 +52,9 @@ const Login = () => {
         open={open}
         handleClose={handleClose}
         onSubmit={onSubmit}
+        errorName={errorName}
+        errorRut={errorRut}
+        errorPassword={errorPassword}
         />                    
     )
 }

@@ -4,8 +4,8 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 /* import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { green, blue } from '@material-ui/core/colors'; */
-import Link from "@material-ui/core/Link";
+import { green, blue } from '@material-ui/core/colors'; 
+import Link from "@material-ui/core/Link";*/
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/AccountBox";
@@ -18,7 +18,7 @@ import AlertNotification from '../../Components/AlertNotification'
 const SignInSide = props => {
 
   const classes = useStyles();
-  const { title, subtitle, Select, onChange, institution, open, handleClose, onSubmit, nameForm} = props;
+  const { title, subtitle, Select, onChange, institution, open, handleClose, onSubmit, nameForm, errorName, errorRut, errorPassword} = props;
   /* const theme = createMuiTheme({
     palette: {
       primary: green,
@@ -62,6 +62,7 @@ const SignInSide = props => {
               variant="outlined"
               fullWidth
               autoFocus
+              error={errorName} 
             >
               {Select.map((option, key) => (
                 <MenuItem key={key} value={option}>
@@ -80,10 +81,9 @@ const SignInSide = props => {
               name="rut"
               value={institution.rut}
               onChange={onChange("rut")}
-              autoComplete="rut"         
-            />
-            
-            
+              autoComplete="rut"       
+              error={errorRut}  
+            />      
             <TextField
               variant="outlined"
               margin="dense"
@@ -96,6 +96,7 @@ const SignInSide = props => {
               autoComplete="current-password"
               value={institution.password}
               onChange={onChange("password")}
+              error={errorPassword} 
             />
             <Button
               type="submit"
@@ -107,18 +108,18 @@ const SignInSide = props => {
               Ingresar
             </Button>
             {/*  </ThemeProvider> */}
-            <Grid container>
+            {/*<Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   ¿Olvidaste tu contraseña?
                 </Link>
               </Grid>
-              {/* <Grid item>
+               <Grid item>
                 <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
-              </Grid> */}
-            </Grid>           
+              </Grid> 
+            </Grid> */}          
           </form>
         </div>
       </Grid>

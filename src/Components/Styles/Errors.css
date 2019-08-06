@@ -1,6 +1,7 @@
 .Error_Image {
-    height: 200px;
+    height: auto;
     margin-top: 60px;
+    width: 100%;
 }
 .Error_Text {
     font-family: Arial, Helvetica, sans-serif;
