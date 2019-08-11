@@ -7,3 +7,9 @@
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 40px;
 }
+.Card{
+    border: none;
+}
+.Card_Error{
+    border: 2px solid red;
+}

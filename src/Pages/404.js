@@ -1,6 +1,6 @@
 import React from "react";
-import "../Components/Styles/Errors.css";
-import NotFoundImg from "../Images/404.png";
+import '../Assets/css/Error.css'
+import NotFoundImg from "../Assets/images/404.png";
 import Typography from "@material-ui/core/Typography";
 import { Container } from "@material-ui/core";
 

@@ -7,18 +7,20 @@ import Error404 from './Pages/404'
 import Account from "./Pages/Account"
 
 
+const App = ()=>{
 
-const App = ()=>(
+  return( 
   <BrowserRouter>
   <CssBaseline />   
     <Switch>
       <Route  exact path="/login" render={props => <Login {...props} />} />
       <Redirect exact from="/" to="/login" />
-      <Route exact path="/account" render={props => <Account {...props} />} />
-      <Redirect exact from="/account" to="/account/home" />       
+      <Route exact path="/account" render={props => <Account {...props} />} />      
       <Route component={Error404}  />                
     </Switch>
   </BrowserRouter>
-)
+)}
+
+
 
 export default App;
