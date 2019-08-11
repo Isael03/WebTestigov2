@@ -1,0 +1,26 @@
+{
+  "Archivo": [
+    {
+      "Id": "01",
+      "Archivos": ["/Images/Font-testigo.jpg"],
+      "Fecha": "25/03/2019",
+      "Ubicacion": {
+        "Latitud": 25,
+        "longitud": 34
+      },
+      "Reportado": false,
+      "Visto":false
+    },
+    {
+        "Id": "02",
+        "Archivos": ["/Images/Font-testigo.jpg"],
+        "Fecha": "25/03/2019",
+        "Ubicacion": {
+          "Latitud": 25,
+          "longitud": 34
+        },
+        "Reportado": true,
+        "Visto":true
+    }
+  ]
+}
