@@ -1,30 +1,28 @@
-import React from 'react'
+import React,{useEffect}  from 'react'
 import HomeUser from './Presentation/HomeUser'
 import {Archivo} from '../data.json'
 
+const Home = ()=>{
+    const [data, setData]= React.useState([])
+    const [values, setValues] = React.useState({
+        filter: "Todos",
+      });
 
-class Home extends React.Component {
-    constructor(props){
-        super(props)
-        this.state={
-            Archivo
-        }
-    }
-    render() {
-        return (
-            <div>
-                  <HomeUser data={this.state.Archivo}/>
-            </div>
-        );
-    }
+    function handleChange(event) {
+        setValues(oldValues => ({
+          ...oldValues,
+          [event.target.name]: event.target.value
+        }));
+      }
+
+    useEffect(()=>{
+        setData(Archivo)
+    },[]) 
+  
+    return (
+              <HomeUser data={data} handleChange={handleChange} values={values}/>
+    );
 }
 
-export default Home;
 
-/* const Home = ()=>{
-    const [dataBD, setData] = React.useState(data)
-    console.log(dataBD)
-    return(
-        <HomeUser />
-    )
-} */
+export default Home;

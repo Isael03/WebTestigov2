@@ -24,10 +24,10 @@ const PanelCases = props => {
       >
         <Typography variant="subtitle1">{nombre}</Typography>
       </ExpansionPanelSummary>
-      <ExpansionPanelDetails style={{padding:'0.5rem 0rem 0.5rem'}}>
-        <Grid container spacing={3} justify="center">
+      <ExpansionPanelDetails style={{padding:'0.5rem 1rem 0.5rem'}}>
+        <Grid container spacing={4} justify="center">
           {data.map((data, key)=>(
-            <Grid item xs={12} sm={2} md={2} key={key}>
+            <Grid item xs={12} sm={4} md={3} lg={2} key={key}>
               <MediaCard file={data.Archivos} report={data.Reportado} spotted={data.Visto}/>
             </Grid> 
           ))}                   
