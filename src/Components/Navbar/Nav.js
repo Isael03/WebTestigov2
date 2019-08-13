@@ -12,17 +12,14 @@ import {
   Typography,
   AppBar,
   Badge
+
 } from "@material-ui/core";
 import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
+import '../../Assets/css/Appbar.css'
+import {Link} from 'react-router-dom';
 
 const styles = {
-  root: {
-    flexGrow: 1
-  },
-  grow: {
-    flexGrow: 1
-  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -30,9 +27,6 @@ const styles = {
   },
   nabvar: {
     backgroundColor: /* '#212121' */ /* || '#171717' */ "#333"
-  },
-  exitIcon: {
-    color: "white"
   }
 };
 
@@ -58,8 +52,9 @@ function ButtonAppBar(props) {
         {/*  <IconButton color="inherit" aria-label="Menu">
           <MenuIcon />
         </IconButton> */}
-        <ThemeProvider theme={theme}>
-        <Badge badgeContent={"Bomberos"}  color='error' >
+          <Link to='/' className='title' > 
+        <ThemeProvider theme={theme}>       
+          <Badge badgeContent={"Bomberos"}  color='error' >
           <Typography
             variant="h6"
             color="inherit"
@@ -67,8 +62,9 @@ function ButtonAppBar(props) {
           >
             Testigo
           </Typography>
-        </Badge>
-        </ThemeProvider>     
+        </Badge>     
+        </ThemeProvider>  
+        </Link>     
         <ToolbarMenu
           render={collapsed => {
             return collapsed
@@ -79,7 +75,7 @@ function ButtonAppBar(props) {
                 ]
               : [
                   <IconButton key="ExitIcon" size="small" onClick={handleExit}>
-                    <ExitToApp className={classes.exitIcon} />
+                    <ExitToApp className='exitIcon' />
                   </IconButton>
                 ];
           }}

@@ -4,52 +4,85 @@ import {
   CardActionArea,
   CardActions,
   CardMedia,
-  IconButton, Grid
+  IconButton,
+  Grid,
+  Tooltip,
 } from "@material-ui/core";
 import {
   Map,
-  CalendarToday, 
-  Visibility , 
-  VisibilityOff, Flag,
+  CalendarToday,
+  Visibility,
+  VisibilityOff,
+  Flag
 } from "@material-ui/icons";
-import '../Assets/css/Error.css'
+import "../Assets/css/Error.css";
+import ModalMap from "./ModalMap";
 
-const ImgMediaCard= (props)=> {
+const ImgMediaCard = props => {
   const [see, setSee] = React.useState(false);
-  //const [report, setReport] = React.useState(false)
-  const {report, file, spotted}=props
+  const [open, setOpen] = React.useState(false);
+  const { report, file, spotted } = props;
 
-  let handleClick =()=>{
+  let handleClick = () => {
     setSee(true);
-  }
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  let CardMediaType = filename => {
+    var extension = filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
+    return extension === "mp4" ? "video" : "img";
+  };
 
   return (
-    <Card  elevation={1} className={report?'Card_Error':'Card'}>
-      <CardActionArea onClick={handleClick}>
-        <CardMedia
-          component="img"
-          alt="Caso"
-          height="120"
-          src={file[0]}
-          /* src="/Images/Font-testigo.jpg" */ 
-          /* src="/Images/【AMV】Fate⁄Grand Order -「Immortals-フェイト⁄グランドオーダ」.mp4"  */         
-          title="Caso"
-         
-        />
-      </CardActionArea>
-      <CardActions >
-        <IconButton size="small" aria-label="Ubicacion">
-          <Map/>
-        </IconButton>
-        <IconButton size="small" aria-label="Fecha">
-          <CalendarToday/>
-        </IconButton>
-        <Grid container justify="flex-end">
-            {report?<Flag color="secondary" aria-label="Reportado"/>:null}
-            {(spotted || see )? <Visibility aria-label="Visto"/>: <VisibilityOff aria-label="No visto"/>}
-        </Grid> 
-      </CardActions>
-    </Card>
+    <React.Fragment>
+      <Card elevation={1} className={report ? "Card_Error" : "Card"}>
+        <CardActionArea onClick={handleClick}>
+          <CardMedia
+            component={CardMediaType(file[0])}
+            alt="Caso"
+            height="120"
+            src={file[0]}
+            title="Caso"
+          />
+        </CardActionArea>
+        <CardActions>
+          <Tooltip title="Ubicación">
+            <IconButton size="small" onClick={handleOpen}>
+              <Map />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Fecha">
+            <IconButton size="small">
+              <CalendarToday />
+            </IconButton>
+          </Tooltip>
+          <Grid container justify="flex-end">
+            {report ? (
+              <Tooltip title="Reportado">
+                <Flag color="secondary" />
+              </Tooltip>
+            ) : null}
+            {spotted || see ? (
+              <Tooltip title="Visto">
+                <Visibility />
+              </Tooltip>
+            ) : (
+              <Tooltip title="No visto">
+                <VisibilityOff />
+              </Tooltip>
+            )}
+          </Grid>
+        </CardActions>
+      </Card>
+        <ModalMap open={open} handleClose={handleClose}/>
+    </React.Fragment>
   );
-}
+};
 export default ImgMediaCard;

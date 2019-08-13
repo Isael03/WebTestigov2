@@ -71,9 +71,9 @@ const HomeUser = props => {
         </Grid>
       </Grid>
       <Container fixed={true}>
-      <Grid container spacing={4} justify="center" className={classes.CardMargin}>
+      <Grid container spacing={5} justify="center" className={classes.CardMargin}>
           {data.map((data, key)=>(
-            <Grid item xs={12} sm={4} md={3} lg={2} key={key}>
+            <Grid item xs={12} sm={4} md={3} lg={3} key={key}>
               <MediaCard file={data.Archivos} report={data.Reportado} spotted={data.Visto}/>
             </Grid> 
           ))}                   

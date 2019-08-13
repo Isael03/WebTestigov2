@@ -1,0 +1,15 @@
+.title{
+    text-decoration: none;
+    color:white;
+}
+.title:hover{
+    text-decoration: none;
+    color:white;
+}
+
+.exitIcon{
+    color:white;
+}
+.exitIcon:hover{
+    color:gray;
+}
