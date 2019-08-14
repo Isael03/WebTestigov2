@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginInSide from "./Presentation/LogininSide"
+import { useCookies } from 'react-cookie';
 
 const Login = (props) => {
     const [form, setForm] = React.useState({
@@ -11,6 +12,9 @@ const Login = (props) => {
     const [errorName, setName] = React.useState(false)
     const [errorRut, setRut] = React.useState(false)
     const [errorPassword, setPassword] = React.useState(false)
+    const [cookies, setCookie] = useCookies(['institution']);
+    
+    document.title='Iniciar sesión'
     
     let handleClose = () => {
         setOpen(false)
@@ -24,16 +28,18 @@ const Login = (props) => {
 
       let onSubmit = e=>{
         e.preventDefault();     
-
+        //Cambiar estado de las advertencias
         if(form.name!==""){setName(false)}
         if(form.rut!==""){setRut(false)}
         if(form.password!==""){setPassword(false)}
-
+        //Comprobar que los campos esten llenos
         if(form.name !=="" && form.rut !=="" && form.password !=="" ){
-          console.log(form);   
-          props.history.push('/account')  
+          setCookie('institution', `${form.name}`, { path: '/' });
+
+          props.history.push('/')  
         }  
         else{
+          //Lanzar advertencias si un campo esta vacio
           if(form.name === ""){setName(true)}
           if(form.rut === ""){setRut(true)}
           if(form.password === ""){setPassword(true)}

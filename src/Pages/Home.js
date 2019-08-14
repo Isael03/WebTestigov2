@@ -8,6 +8,7 @@ const Home = ()=>{
         filter: "Todos",
       });
 
+    document.title='Inicio'  
     function handleChange(event) {
         setValues(oldValues => ({
           ...oldValues,
@@ -20,7 +21,7 @@ const Home = ()=>{
     },[]) 
   
     return (
-              <HomeUser data={data} handleChange={handleChange} values={values}/>
+              <HomeUser data={data} handleChange={handleChange} values={values} tags={['Todos','Accidentes', 'Robos', 'Incendios']}/>
     );
 }
 

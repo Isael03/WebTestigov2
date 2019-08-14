@@ -5,19 +5,27 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Login from "./Pages/Login"
 import Error404 from './Pages/404'
 import Account from "./Pages/Account"
+import { CookiesProvider } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 
 
 const App = ()=>{
+  const [cookies] = useCookies(['institution']);
+
 
   return( 
   <BrowserRouter>
   <CssBaseline />   
+  <CookiesProvider>
     <Switch>
       <Route  exact path="/login" render={props => <Login {...props} />} />
-      <Redirect exact from="/" to="/login" />
-      <Route exact path="/account" render={props => <Account {...props} />} />      
+      <Route exact path="/" render={props =>(cookies.institution==='undefined'? (
+        < Redirect to="/login"/>) : (<Account {...props} />))} />  
+      
+      
       <Route component={Error404}  />                
     </Switch>
+    </CookiesProvider>
   </BrowserRouter>
 )}
 

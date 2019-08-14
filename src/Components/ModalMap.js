@@ -16,12 +16,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ModalMap = ({ handleClose, open }) => {
+const ModalMap = ({ handleClose, open, latitud, longitud }) => {
   const classes = useStyles();
+  
   return (
     <Modal open={open} onClose={handleClose} className={classes.modal}>
       <Grid container>
-        <MapCase />
+        <MapCase latitud={latitud} longitud={longitud}/>
         <Button
           variant="contained"
           fullWidth

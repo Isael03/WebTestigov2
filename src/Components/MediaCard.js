@@ -81,7 +81,7 @@ const ImgMediaCard = props => {
           </Grid>
         </CardActions>
       </Card>
-        <ModalMap open={open} handleClose={handleClose}/>
+        <ModalMap open={open} handleClose={handleClose} {...props}/>
     </React.Fragment>
   );
 };

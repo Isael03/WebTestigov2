@@ -25,10 +25,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const HomeUser = props => {
+const HomeUser = ({data, handleChange, values, tags}) => {
 
   const classes = useStyles();
-  const { data, handleChange, values } = props;
  
   return (
     <Container>
@@ -59,22 +58,22 @@ const HomeUser = props => {
               displayEmpty
               name="filter"            
             >
-              <MenuItem value="Todos">
-                <em>Todos</em>
+              {tags.map((tag, key)=>(
+                <MenuItem value={tag} key={key}>
+                {tag}
               </MenuItem>
-              <MenuItem value='Accidentes'>Accidentes</MenuItem>
+              ))}
             </Select>
           </FormControl>
             </Grid>         
-          </Grid>
-        
+          </Grid>        
         </Grid>
       </Grid>
       <Container fixed={true}>
       <Grid container spacing={5} justify="center" className={classes.CardMargin}>
           {data.map((data, key)=>(
             <Grid item xs={12} sm={4} md={3} lg={3} key={key}>
-              <MediaCard file={data.Archivos} report={data.Reportado} spotted={data.Visto}/>
+              <MediaCard id={data.Id} file={data.Archivos} report={data.Reportado} spotted={data.Visto} latitud={data.Ubicacion.Latitud} longitud={data.Ubicacion.Longitud} Fecha={data.Fecha}/>
             </Grid> 
           ))}                   
         </Grid>

@@ -5,8 +5,8 @@
       "Archivos": ["/Images/Font-testigo.jpg"],
       "Fecha": "25/03/2019",
       "Ubicacion": {
-        "Latitud": 25,
-        "longitud": 34
+        "Latitud": -27.3664,
+        "Longitud": -70.3331
       },
       "Reportado": false,
       "Visto":false
@@ -16,8 +16,8 @@
         "Archivos": ["/Images/Font-testigo.jpg"],
         "Fecha": "25/03/2019",
         "Ubicacion": {
-          "Latitud": 25,
-          "longitud": 34
+          "Latitud":-27.3664,
+          "Longitud": -70.3331
         },
         "Reportado": true,
         "Visto":true
@@ -27,8 +27,8 @@
       "Archivos": ["/Images/Most Epic Music Ever׃ Mosane.mp4","/Images/Font-testigo.jpg"],
       "Fecha": "25/03/2019",
       "Ubicacion": {
-        "Latitud": 25,
-        "longitud": 34
+        "Latitud": -27.3664,
+        "Longitud": -70.3331
       },
       "Reportado": false,
       "Visto":false
@@ -38,8 +38,8 @@
       "Archivos": ["/Images/Font-testigo.jpg"],
       "Fecha": "25/03/2019",
       "Ubicacion": {
-        "Latitud": 25,
-        "longitud": 34
+        "Latitud": -27.3664,
+        "Longitud": -70.3331
       },
       "Reportado": false,
       "Visto":false
@@ -49,8 +49,8 @@
       "Archivos": ["/Images/Font-testigo.jpg"],
       "Fecha": "25/03/2019",
       "Ubicacion": {
-        "Latitud": 25,
-        "longitud": 34
+        "Latitud": -27.3664,
+        "Longitud": -70.3331
       },
       "Reportado": false,
       "Visto":false
@@ -60,8 +60,8 @@
       "Archivos": ["/Images/Font-testigo.jpg"],
       "Fecha": "25/03/2019",
       "Ubicacion": {
-        "Latitud": 25,
-        "longitud": 34
+        "Latitud":-27.3664,
+        "Longitud": -70.3331
       },
       "Reportado": false,
       "Visto":false

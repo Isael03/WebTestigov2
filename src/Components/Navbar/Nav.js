@@ -44,7 +44,7 @@ const theme = createMuiTheme({
 
 
 function ButtonAppBar(props) {
-  const { classes, handleExit } = props;
+  const { classes, handleExit, bagdeName } = props;
 
   return (
     <AppBar position="sticky" className={classes.nabvar}>
@@ -54,7 +54,7 @@ function ButtonAppBar(props) {
         </IconButton> */}
           <Link to='/' className='title' > 
         <ThemeProvider theme={theme}>       
-          <Badge badgeContent={"Bomberos"}  color='error' >
+          <Badge badgeContent={bagdeName}  color={bagdeName==='Carabineros'?'secondary':(bagdeName==='Bomberos'?'error':'primary')} >
           <Typography
             variant="h6"
             color="inherit"

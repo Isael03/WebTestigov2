@@ -28,7 +28,7 @@ const PanelCases = props => {
         <Grid container spacing={3} justify="center">
           {data.map((data, key)=>(
             <Grid item xs={12} sm={4} md={3} lg={2} key={key}>
-              <MediaCard file={data.Archivos} report={data.Reportado} spotted={data.Visto}/>
+              <MediaCard id={data.Id} file={data.Archivos} report={data.Reportado} spotted={data.Visto} latitud={data.Ubicacion.Latitud} longitud={data.Ubicacion.Longitud} Fecha={data.Fecha}/>
             </Grid> 
           ))}                   
         </Grid>
