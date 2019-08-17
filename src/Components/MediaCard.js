@@ -17,14 +17,17 @@ import {
 } from "@material-ui/icons";
 import "../Assets/css/Error.css";
 import ModalMap from "./ModalMap";
+import Viewer from '../Pages/Viewer'
+import { Route, Switch, Link } from "react-router-dom";
 
 const ImgMediaCard = props => {
   const [see, setSee] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const { report, file, spotted } = props;
+  const { report, file, spotted, id } = props;
 
   let handleClick = () => {
-    setSee(true);
+    /* setTimeout(()=>(setSee(true)), 3000) */
+    setSee(true)
   };
 
   const handleOpen = () => {
@@ -43,6 +46,7 @@ const ImgMediaCard = props => {
   return (
     <React.Fragment>
       <Card elevation={1} className={report ? "Card_Error" : "Card"}>
+        <Link to={`/watch/${id}`}>
         <CardActionArea onClick={handleClick}>
           <CardMedia
             component={CardMediaType(file[0])}
@@ -52,6 +56,8 @@ const ImgMediaCard = props => {
             title="Caso"
           />
         </CardActionArea>
+        </Link>
+        
         <CardActions>
           <Tooltip title="Ubicación">
             <IconButton size="small" onClick={handleOpen}>
@@ -81,7 +87,10 @@ const ImgMediaCard = props => {
           </Grid>
         </CardActions>
       </Card>
-        <ModalMap open={open} handleClose={handleClose} {...props}/>
+        <ModalMap open={open} handleClose={handleClose} {...props}/>  
+         <Switch>          
+          <Route path='/watch/:id' render={() => <Viewer /* {...props} */ demo={'file'}/>}/>          
+        </Switch> 
     </React.Fragment>
   );
 };

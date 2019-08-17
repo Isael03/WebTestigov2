@@ -1,32 +1,27 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Login from "./Pages/Login"
 import Error404 from './Pages/404'
-import Account from "./Pages/Account"
-import { CookiesProvider } from 'react-cookie';
+import Viewer from './Pages/Viewer'
 import { useCookies } from 'react-cookie';
+import Home from './Pages/Home' 
 
 
-const App = ()=>{
+const App = (props)=>{
   const [cookies] = useCookies(['institution']);
 
 
   return( 
-  <BrowserRouter>
-  <CssBaseline />   
-  <CookiesProvider>
+    <React.Fragment>
     <Switch>
-      <Route  exact path="/login" render={props => <Login {...props} />} />
-      <Route exact path="/" render={props =>(cookies.institution==='undefined'? (
-        < Redirect to="/login"/>) : (<Account {...props} />))} />  
-      
-      
-      <Route component={Error404}  />                
+      <Route  path="/login" render={props => <Login {...props} />} />       
+       <Route exact path="/" render={props =>(cookies.institution==='undefined'? (
+        <Redirect to="/login"/>) : (<Home {...props} />))} />   
+      <Route path='/watch' render={props => <Viewer {...props}/>}/> 
+      <Route render={()=>(<Error404/>)}  />              
     </Switch>
-    </CookiesProvider>
-  </BrowserRouter>
+    </React.Fragment>
 )}
 
 

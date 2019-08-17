@@ -17,7 +17,8 @@ import {
 import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
 import '../../Assets/css/Appbar.css'
-import {Link} from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+import {Link} from 'react-router-dom'
 
 const styles = {
   menuButton: {
@@ -44,7 +45,14 @@ const theme = createMuiTheme({
 
 
 function ButtonAppBar(props) {
-  const { classes, handleExit, bagdeName } = props;
+  const { classes } = props;
+  const [cookies, removeCookie] = useCookies(['institution']);
+
+
+     let handleExit = ()=>{
+        removeCookie('institution')
+
+      } 
 
   return (
     <AppBar position="sticky" className={classes.nabvar}>
@@ -54,7 +62,7 @@ function ButtonAppBar(props) {
         </IconButton> */}
           <Link to='/' className='title' > 
         <ThemeProvider theme={theme}>       
-          <Badge badgeContent={bagdeName}  color={bagdeName==='Carabineros'?'secondary':(bagdeName==='Bomberos'?'error':'primary')} >
+          <Badge badgeContent={cookies.institution}  color={cookies.institution==='Carabineros'?'secondary':(cookies.institution==='Bomberos'?'error':'primary')} >
           <Typography
             variant="h6"
             color="inherit"
@@ -69,18 +77,20 @@ function ButtonAppBar(props) {
           render={collapsed => {
             return collapsed
               ? [
-                  <MenuItem key="Exit" autoclose={true}>
+                  <MenuItem key="Exit" autoclose={true}  onClick={handleExit}>
                     Salir
                   </MenuItem>
                 ]
               : [
-                  <IconButton key="ExitIcon" size="small" onClick={handleExit}>
-                    <ExitToApp className='exitIcon' />
+              <Link to='/login' key="ExitIcon">
+                  <IconButton  size="small" onClick={handleExit}>
+                      <ExitToApp className='exitIcon' />
                   </IconButton>
+              </Link>              
                 ];
           }}
         />
-      </Toolbar>
+      </Toolbar>      
     </AppBar>
   );
 }

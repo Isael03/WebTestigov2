@@ -6,7 +6,7 @@ const MapCase = (props)=>{
   return(   
   <Map
     google={props.google}
-     style={{ width: "100%", height: "100%"}} 
+     style={{ width: "100%", height: "97%"}} 
     className={"map"}
     initialCenter={{ lat:latitud, lng: longitud}}
     zoom={18}

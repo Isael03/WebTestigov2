@@ -6,7 +6,7 @@ import MapCase from "./MapCase";
 const useStyles = makeStyles(theme => ({
   modal: {
     height: "85vh",
-    width: "80vw",
+    width: "90vw",
     margin: "auto"
   },
   button: {

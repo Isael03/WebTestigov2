@@ -2,7 +2,8 @@ import React,{useEffect}  from 'react'
 import HomeUser from './Presentation/HomeUser'
 import {Archivo} from '../data.json'
 
-const Home = ()=>{
+
+const Home = (props)=>{
     const [data, setData]= React.useState([])
     const [values, setValues] = React.useState({
         filter: "Todos",
@@ -20,8 +21,8 @@ const Home = ()=>{
         setData(Archivo)
     },[]) 
   
-    return (
-              <HomeUser data={data} handleChange={handleChange} values={values} tags={['Todos','Accidentes', 'Robos', 'Incendios']}/>
+    return (   
+              <HomeUser data={data} handleChange={handleChange} values={values} tags={['Todos','Accidentes', 'Robos', 'Incendios']}/>            
     );
 }
 
