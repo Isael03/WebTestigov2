@@ -7,6 +7,7 @@ import {
   IconButton,
   Grid,
   Tooltip,
+  Typography
 } from "@material-ui/core";
 import {
   Map,
@@ -16,6 +17,7 @@ import {
   Flag
 } from "@material-ui/icons";
 import "../Assets/css/Error.css";
+import "../Assets/css/CardMedia.css";
 import ModalMap from "./ModalMap";
 import Viewer from '../Pages/Viewer'
 import { Route, Switch, Link } from "react-router-dom";
@@ -23,7 +25,7 @@ import { Route, Switch, Link } from "react-router-dom";
 const ImgMediaCard = props => {
   const [see, setSee] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const { report, file, spotted, id } = props;
+  const { report, file, spotted, id, Fecha } = props;
 
   let handleClick = () => {
     /* setTimeout(()=>(setSee(true)), 3000) */
@@ -56,18 +58,17 @@ const ImgMediaCard = props => {
             title="Caso"
           />
         </CardActionArea>
-        </Link>
-        
+        </Link>      
         <CardActions>
           <Tooltip title="Ubicación">
             <IconButton size="small" onClick={handleOpen}>
               <Map />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Fecha">
-            <IconButton size="small">
-              <CalendarToday />
-            </IconButton>
+          <Tooltip title={`Fecha: ${Fecha}`} interactive	leaveTouchDelay={2000}>
+            {/* <IconButton size="small"> */}
+              <CalendarToday className='color-icon'/>
+            {/* </IconButton> */}
           </Tooltip>
           <Grid container justify="flex-end">
             {report ? (
@@ -89,7 +90,7 @@ const ImgMediaCard = props => {
       </Card>
         <ModalMap open={open} handleClose={handleClose} {...props}/>  
          <Switch>          
-          <Route path='/watch/:id' render={() => <Viewer /* {...props} */ demo={'file'}/>}/>          
+          <Route path='/watch/:id' render={() => <Viewer/>}/>          
         </Switch> 
     </React.Fragment>
   );

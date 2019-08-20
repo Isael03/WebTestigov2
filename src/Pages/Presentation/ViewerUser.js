@@ -6,7 +6,8 @@ import {
   Typography,
   IconButton,
   MobileStepper,
-  Grid, Paper
+  Grid, 
+  Tooltip
 } from "@material-ui/core";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
@@ -24,61 +25,14 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 700,
     flexGrow: 1,
     overflow:'hidden'
-  },
-  img: {
-    height: 255,
-    maxWidth: 650,
-    overflow: "hidden",
-    display: "block",
-    width: "100%"
-  }, 
-  comment:{
-    maxWidth:700,
-    margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
   }
 }));
 
 export default function TextMobileStepper(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [report, setReport] = React.useState(false)
-  const [open, setOpen] = React.useState(false)
-
-  let routes = [
-    "/Images/Most Epic Music Ever׃ Mosane.mp4",
-    "/Images/Font-testigo.jpg"
-  ];
-
-  const maxSteps = routes.length;
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  function handleNext() {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
-  }
-
-  function handleBack() {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
-  }
-  function handleStepChange(step) {
-    setActiveStep(step);
-  }
-
-  let type = filename => {
-    var extension = filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
-    return extension === "mp4" ? "video" : "img";
-  };
-  let handldeReport = ()=>{
-    report===true?setReport(false):setReport(true)
-  }
-    
+  
+  const {open, handleOpen, handleClose, report, handldeReport, type, activeStep, handleNext, handleBack, handleStepChange, fecha, comentario, latitud, longitud, maxSteps, routes}=props
   
 
   return (
@@ -148,7 +102,7 @@ export default function TextMobileStepper(props) {
               </Button>
             }
           />
-          <Typography variant="subtitle2" className='pt-1'>25/06/2019 22:00</Typography>
+          <Typography variant="subtitle2" className='pt-1'>{fecha}</Typography>
                <Grid
             container
              direction="column"
@@ -158,7 +112,7 @@ export default function TextMobileStepper(props) {
              spacing={2}
           >
             <Grid item xs={12}  >
-            <Typography>Estoy intentando escribir un texto largo, para probar el que servira para los comentarios largos, espero que salga bien
+            <Typography>{comentario}
             </Typography>
             </Grid>            
             <Grid item xs>
@@ -167,17 +121,19 @@ export default function TextMobileStepper(props) {
               justify="center"
               alignItems="center">
                 <Audio />
-                <IconButton onClick={handleOpen}>
+                <Tooltip title="Ubicación"><IconButton onClick={handleOpen}>
                   <Map />
                 </IconButton>
-                <IconButton onClick={handldeReport}>
-                {/*   {report?<Flag color='secondary'/>:<Flag />} */}
+                </Tooltip>
+                <Tooltip title='Reportar'>
+                 <IconButton onClick={handldeReport}>
                   <Flag color={report===true?'secondary':'inherit'}/>
-                </IconButton>
+                </IconButton> 
+                </Tooltip>                            
               </Grid>               
             </Grid>
             </Grid>    
-            <ModalMap latitud={-27.3664} longitud={-70.3331} open={open} handleClose={handleClose}/>
+            <ModalMap latitud={latitud} longitud={longitud} open={open} handleClose={handleClose}/>
         </Container>
       </div>
     </React.Fragment>

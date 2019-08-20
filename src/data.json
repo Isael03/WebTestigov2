@@ -3,7 +3,7 @@
     {
       "Id": "01",
       "Archivos": ["/Images/Font-testigo.jpg"],
-      "Fecha": "25/03/2019",
+      "Fecha": "25/03/2019 14:55",
       "Ubicacion": {
         "Latitud": -27.3664,
         "Longitud": -70.3331
@@ -14,7 +14,7 @@
     {
         "Id": "02",
         "Archivos": ["/Images/testigo_delito-01.jpg"],
-        "Fecha": "25/03/2019",
+        "Fecha": "25/03/2019 14:55",
         "Ubicacion": {
           "Latitud":-27.3664,
           "Longitud": -70.3331
@@ -25,7 +25,7 @@
     {
       "Id": "03",
       "Archivos": ["/Images/Most Epic Music Ever׃ Mosane.mp4","/Images/Font-testigo.jpg, /Images/testigo_delito-01.jpg"],
-      "Fecha": "25/03/2019",
+      "Fecha": "25/03/2019 14:55",
       "Ubicacion": {
         "Latitud": -27.3664,
         "Longitud": -70.3331
@@ -36,7 +36,7 @@
     {
       "Id": "04",
       "Archivos": ["/Images/Most Epic Music Ever׃ Mosane.mp4"],
-      "Fecha": "25/03/2019",
+      "Fecha": "25/03/2019 14:55",
       "Ubicacion": {
         "Latitud": -27.3664,
         "Longitud": -70.3331
@@ -47,7 +47,7 @@
     {
       "Id": "05",
       "Archivos": ["/Images/Font-testigo.jpg", "/Images/testigo_delito-01.jpg"],
-      "Fecha": "25/03/2019",
+      "Fecha": "25/03/2019 14:55",
       "Ubicacion": {
         "Latitud": -27.3664,
         "Longitud": -70.3331
@@ -58,7 +58,7 @@
     {
       "Id": "06",
       "Archivos": ["/Images/Font-testigo.jpg"],
-      "Fecha": "25/03/2019",
+      "Fecha": "25/03/2019 14:55",
       "Ubicacion": {
         "Latitud":-27.3664,
         "Longitud": -70.3331

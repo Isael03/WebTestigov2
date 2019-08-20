@@ -43,7 +43,6 @@ const theme = createMuiTheme({
 });
 
 
-
 function ButtonAppBar(props) {
   const { classes } = props;
   const [cookies, removeCookie] = useCookies(['institution']);
@@ -51,7 +50,6 @@ function ButtonAppBar(props) {
 
      let handleExit = ()=>{
         removeCookie('institution')
-
       } 
 
   return (

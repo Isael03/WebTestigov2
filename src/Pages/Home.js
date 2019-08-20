@@ -20,10 +20,11 @@ const Home = (props)=>{
     useEffect(()=>{
         setData(Archivo)
     },[]) 
+
   
     return (   
               <HomeUser data={data} handleChange={handleChange} values={values} tags={['Todos','Accidentes', 'Robos', 'Incendios']}/>            
-    );
+    ); 
 }
 
 

@@ -15,9 +15,10 @@ const App = (props)=>{
   return( 
     <React.Fragment>
     <Switch>
-      <Route  path="/login" render={props => <Login {...props} />} />       
-       <Route exact path="/" render={props =>(cookies.institution==='undefined'? (
-        <Redirect to="/login"/>) : (<Home {...props} />))} />   
+      <Route  path="/login" render={props => (cookies.institution==='undefined'? (
+        <Login {...props} />) : (<Redirect to="/"/>))} />       
+       <Route exact path="/" render={props =>(cookies.institution!=='undefined'? (
+        <Home {...props} />) : (<Redirect to="/login"/>))} />   
       <Route path='/watch' render={props => <Viewer {...props}/>}/> 
       <Route render={()=>(<Error404/>)}  />              
     </Switch>
