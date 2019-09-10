@@ -6,8 +6,7 @@ import {
   CardMedia,
   IconButton,
   Grid,
-  Tooltip,
-  Typography
+  Tooltip
 } from "@material-ui/core";
 import {
   Map,
@@ -22,10 +21,12 @@ import ModalMap from "./ModalMap";
 import Viewer from '../Pages/Viewer'
 import { Route, Switch, Link } from "react-router-dom";
 
+
 const ImgMediaCard = props => {
   const [see, setSee] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const { report, file, spotted, id, Fecha } = props;
+ 
 
   let handleClick = () => {
     /* setTimeout(()=>(setSee(true)), 3000) */

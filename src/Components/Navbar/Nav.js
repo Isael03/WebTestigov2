@@ -48,8 +48,8 @@ function ButtonAppBar(props) {
   const [cookies, removeCookie] = useCookies(['institution']);
 
 
-     let handleExit = ()=>{
-        removeCookie('institution')
+     let handleExit = (props)=>{
+        removeCookie('institution')        
       } 
 
   return (
@@ -58,7 +58,7 @@ function ButtonAppBar(props) {
         {/*  <IconButton color="inherit" aria-label="Menu">
           <MenuIcon />
         </IconButton> */}
-          <Link to='/' className='title' > 
+          <Link to={`/home/${cookies.institution}`} className='title' > 
         <ThemeProvider theme={theme}>       
           <Badge badgeContent={cookies.institution}  color={cookies.institution==='Carabineros'?'secondary':(cookies.institution==='Bomberos'?'error':'primary')} >
           <Typography
@@ -75,16 +75,16 @@ function ButtonAppBar(props) {
           render={collapsed => {
             return collapsed
               ? [
-                  <MenuItem key="Exit" autoclose={true}  onClick={handleExit}>
-                    Salir
+               
+                  <MenuItem key="Exit" autoclose='true'  onClick={handleExit}>
+                    <Link to='/login' key="ExitIcon" className='text-dark'>Salir</Link>
                   </MenuItem>
+ 
                 ]
               : [
-              <Link to='/login' key="ExitIcon">
-                  <IconButton  size="small" onClick={handleExit}>
-                      <ExitToApp className='exitIcon' />
-                  </IconButton>
-              </Link>              
+                  <IconButton  size="small" onClick={handleExit} key="ExitIcon">
+                     <Link to='/login' ><ExitToApp className='Nav-Icon' /></Link> 
+                  </IconButton>          
                 ];
           }}
         />

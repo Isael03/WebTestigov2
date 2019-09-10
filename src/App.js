@@ -15,11 +15,15 @@ const App = (props)=>{
   return( 
     <React.Fragment>
     <Switch>
+      <Redirect exact from='/' to="/watch" />
       <Route  path="/login" render={props => (cookies.institution==='undefined'? (
-        <Login {...props} />) : (<Redirect to="/"/>))} />       
-       <Route exact path="/" render={props =>(cookies.institution!=='undefined'? (
-        <Home {...props} />) : (<Redirect to="/login"/>))} />   
-      <Route path='/watch' render={props => <Viewer {...props}/>}/> 
+        <Login {...props} />) : (<Redirect to="/home"/>))} />       
+       <Route exact path="/home" render={props =>(cookies.institution!=='undefined'? (
+        <Home {...props} />) : (<Redirect to="/login"/>))} /> 
+        <Route exact path="/home/:institution" render={props =>(cookies.institution!=='undefined'? (
+        <Home {...props} />) : (<Redirect to="/login"/>))} />  
+      <Route exact path='/watch/:id' render={props => <Viewer {...props}/>}/> 
+      {/* <Route path='/watch/:id' render={props => <Viewer {...props}/>}/>  */}
       <Route render={()=>(<Error404/>)}  />              
     </Switch>
     </React.Fragment>

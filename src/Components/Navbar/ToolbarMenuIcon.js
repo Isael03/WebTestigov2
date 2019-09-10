@@ -49,7 +49,7 @@ class ToolbarMenuIcon extends React.Component {
     return (
       <div className={classes.buttonCollapse}>
         <IconButton onClick={this.handleMenu}>
-          <HomeIcon />
+          <HomeIcon className='Nav-Icon'/>
         </IconButton>
         <Menu
           id="menu-appbar"
