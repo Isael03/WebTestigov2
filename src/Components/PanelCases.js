@@ -11,7 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import MediaCard from "./MediaCard";
 
 const PanelCases = props => {
-  let {nombre, data} = props
+  let {nombre, data, link} = props
 
 
   return (
@@ -28,7 +28,7 @@ const PanelCases = props => {
         <Grid container spacing={3} justify="center">
           {data.map((data, key)=>(
             <Grid item xs={12} sm={4} md={3} lg={2} key={key}>
-              <MediaCard id={data.Id} file={data.Archivos} report={data.Reportado} spotted={data.Visto} latitud={data.Ubicacion.Latitud} longitud={data.Ubicacion.Longitud} Fecha={data.Fecha}/>
+              <MediaCard id={data.id} file={data.Archivo} report={data.Reportado} spotted={data.Visto} latitud={data.Ubicacion.Latitud} longitud={data.Ubicacion.Longitud} Fecha={data.Fecha}  link={`/watch/${data.id}`}/>
             </Grid> 
           ))}                   
         </Grid>

@@ -36,7 +36,7 @@ const Login = (props) => {
         if(form.name !=="" && form.rut !=="" && form.password !=="" ){
           setCookie('institution', `${form.name}`, { path: '/' });
 
-          props.history.push(`/home/${form.name}`)  
+          props.history.push(`/home`)  
         }  
         else{
           //Lanzar advertencias si un campo esta vacio

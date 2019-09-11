@@ -58,7 +58,7 @@ function ButtonAppBar(props) {
         {/*  <IconButton color="inherit" aria-label="Menu">
           <MenuIcon />
         </IconButton> */}
-          <Link to={`/home/${cookies.institution}`} className='title' > 
+          <Link to='/home' className='title' > 
         <ThemeProvider theme={theme}>       
           <Badge badgeContent={cookies.institution}  color={cookies.institution==='Carabineros'?'secondary':(cookies.institution==='Bomberos'?'error':'primary')} >
           <Typography

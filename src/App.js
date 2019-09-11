@@ -15,15 +15,24 @@ const App = (props)=>{
   return( 
     <React.Fragment>
     <Switch>
-      <Redirect exact from='/' to="/watch" />
+      <Redirect exact from='/' to="/home" />
+      {/* Si la cookie institution NO esta definida el router redirige al usuario al login, de lo contrario al Home */}
       <Route  path="/login" render={props => (cookies.institution==='undefined'? (
-        <Login {...props} />) : (<Redirect to="/home"/>))} />       
-       <Route exact path="/home" render={props =>(cookies.institution!=='undefined'? (
+        <Login {...props} />) : (<Redirect to='/home' />))} />     
+
+      {/* Si la cookie institution SI esta definida el router redirige al usuario al Home, de lo contrario al login*/}
+       {/* <Route exact path="/home" render={props =>(cookies.institution!=='undefined'? (
+        <Home {...props} />) : (<Redirect to="/login"/>))} />  */}
+
+        {/*Ruta home que acepta parametros */}
+        <Route exact path="/home" render={props =>(cookies.institution!=='undefined'? (
         <Home {...props} />) : (<Redirect to="/login"/>))} /> 
-        <Route exact path="/home/:institution" render={props =>(cookies.institution!=='undefined'? (
-        <Home {...props} />) : (<Redirect to="/login"/>))} />  
+
+        {/**Ruta Watch que acepta parametros */}
       <Route exact path='/watch/:id' render={props => <Viewer {...props}/>}/> 
-      {/* <Route path='/watch/:id' render={props => <Viewer {...props}/>}/>  */}
+
+
+          {/**Ruta para renderizar vista de error en caso de no encontrar la página */}
       <Route render={()=>(<Error404/>)}  />              
     </Switch>
     </React.Fragment>

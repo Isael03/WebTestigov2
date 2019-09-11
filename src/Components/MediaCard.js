@@ -25,7 +25,7 @@ import { Route, Switch, Link } from "react-router-dom";
 const ImgMediaCard = props => {
   const [see, setSee] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const { report, file, spotted, id, Fecha } = props;
+  const { report, file, spotted, Fecha, link } = props;
  
 
   let handleClick = () => {
@@ -49,7 +49,7 @@ const ImgMediaCard = props => {
   return (
     <React.Fragment>
       <Card elevation={1} className={report ? "Card_Error" : "Card"}>
-        <Link to={`/watch/${id}`}>
+        <Link to={link}>
         <CardActionArea onClick={handleClick}>
           <CardMedia
             component={CardMediaType(file[0])}

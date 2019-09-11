@@ -26,8 +26,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const HomeUser = ({ data, handleChange, values, tags }) => {
+const HomeUser = ({ data, handleChange, values, tags}) => {
   const classes = useStyles();
+
+
 
   return (
     <React.Fragment>
@@ -82,13 +84,14 @@ const HomeUser = ({ data, handleChange, values, tags }) => {
               {data.map((data, key) => (
                 <Grid item xs={12} sm={4} md={3} lg={3} key={key}>
                   <MediaCard
-                    id={data.Id}
-                    file={data.Archivos}
+                    id={data.id}
+                    file={data.Archivo}
                     report={data.Reportado}
                     spotted={data.Visto}
                     latitud={data.Ubicacion.Latitud}
                     longitud={data.Ubicacion.Longitud}
                     Fecha={data.Fecha}
+                    link={`/watch/${data.id}`}
                   />
                 </Grid>
               ))}
