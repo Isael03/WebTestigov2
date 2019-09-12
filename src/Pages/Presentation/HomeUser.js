@@ -4,9 +4,9 @@ import {
   Divider,
   Typography,
   Grid,
-  FormControl,
+  /* FormControl,
   Select,
-  MenuItem
+  MenuItem */
 } from "@material-ui/core";
 import PanelCases from "../../Components/PanelCases";
 import MediaCard from "../../Components/MediaCard";
@@ -50,9 +50,9 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
                 {values.filter}
               </Typography>
             </Grid>
-            <Grid item>
+            {/*<Grid item>
               <Grid container>
-                <Grid item>
+                 <Grid item>
                   <Typography variant="subtitle1">Filtrado por:</Typography>
                 </Grid>
                 <Grid item>
@@ -69,10 +69,10 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
                         </MenuItem>
                       ))}
                     </Select>
-                  </FormControl>
+                  </FormControl> 
                 </Grid>
               </Grid>
-            </Grid>
+            </Grid>*/}
           </Grid>
           <Container fixed={true}>
             <Grid

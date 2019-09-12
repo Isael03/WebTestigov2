@@ -9,7 +9,7 @@ import Home from './Pages/Home'
 
 
 const App = (props)=>{
-  const [cookies] = useCookies(['institution']);
+  const [cookies] = useCookies(['user']);
 
 
   return( 
@@ -17,7 +17,7 @@ const App = (props)=>{
     <Switch>
       <Redirect exact from='/' to="/home" />
       {/* Si la cookie institution NO esta definida el router redirige al usuario al login, de lo contrario al Home */}
-      <Route  path="/login" render={props => (cookies.institution==='undefined'? (
+      <Route  path="/login" render={props => (cookies.user==='undefined'? (
         <Login {...props} />) : (<Redirect to='/home' />))} />     
 
       {/* Si la cookie institution SI esta definida el router redirige al usuario al Home, de lo contrario al login*/}
@@ -25,7 +25,7 @@ const App = (props)=>{
         <Home {...props} />) : (<Redirect to="/login"/>))} />  */}
 
         {/*Ruta home que acepta parametros */}
-        <Route exact path="/home" render={props =>(cookies.institution!=='undefined'? (
+        <Route exact path="/home" render={props =>(cookies.user!=='undefined'? (
         <Home {...props} />) : (<Redirect to="/login"/>))} /> 
 
         {/**Ruta Watch que acepta parametros */}

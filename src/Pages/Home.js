@@ -1,12 +1,12 @@
 import React,{useEffect}  from 'react'
 import HomeUser from './Presentation/HomeUser'
-import {Archivo} from '../data.json'
+
 
 
 const Home = (props)=>{
     const [data, setData]= React.useState([])
     const [values, setValues] = React.useState({
-        filter: "Todos",
+        filter: "Contenido",
       });
 
     document.title='Inicio'  

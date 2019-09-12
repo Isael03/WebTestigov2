@@ -11,7 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import MediaCard from "./MediaCard";
 
 const PanelCases = props => {
-  let {nombre, data, link} = props
+  let {nombre, data} = props
 
 
   return (

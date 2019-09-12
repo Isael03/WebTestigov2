@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useEffect} from "react";
 import ViewerUser from "./Presentation/ViewerUser";
 
-const Viewer = () => {
+
+const Viewer = ({match}) => {
   const [report, setReport] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
+  const [data, setData] =React.useState([])
 
   const handleClose = () => {
     setOpen(false);
@@ -35,9 +37,38 @@ const Viewer = () => {
   let routes = [
     "/Images/Most Epic Music Ever׃ Mosane.mp4",
     "/Images/Font-testigo.jpg"
-  ];
+  ] || [];
 
   const maxSteps = routes.length;
+
+
+
+  /**Peticion fecth a la API, enviadole el parametro id de la url para hacer la consulta a la bd */
+  useEffect(()=>{
+
+    const viewFile = async()=>{
+
+      try {
+        let config={
+          method:'POST',
+          headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+           }, 
+          body:match.params
+        }
+        let res = await fetch('http://localhost:3000/watch/api', config)
+        let dataFiles= await res.json() 
+        setData(dataFiles)
+        console.log(data)
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    viewFile()
+  },[match.params, data])
+
 
   return (
     <ViewerUser
