@@ -10,6 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/AccountBox";
 import Typography from "@material-ui/core/Typography";
+import MenuItem from "@material-ui/core/MenuItem";
 import useStyles from '../../Assets/js/loginCss'
 import AlertNotification from '../../Components/AlertNotification'
 //import {Link} from 'react-router-dom'
@@ -17,7 +18,8 @@ import AlertNotification from '../../Components/AlertNotification'
 const SignInSide = props => {
 
   const classes = useStyles();
-  const { title, subtitle, onChange, institution, open, handleClose, onSubmit, nameForm, errorRut, errorPassword} = props;
+  const { title, subtitle, onChange, institution, open, handleClose, onSubmit, nameForm, errorRut, errorPassword,
+  errorName, Select} = props;
   /* const theme = createMuiTheme({
     palette: {
       primary: green,
@@ -49,7 +51,26 @@ const SignInSide = props => {
             {nameForm}
           </Typography>
           <form className={classes.form} noValidate onSubmit={onSubmit} >
-             {/* <ThemeProvider theme={theme}>  */}       
+             {/* <ThemeProvider theme={theme}>  */}    
+             <TextField     
+              id="institution"
+              required
+              select
+              label="Seleccione Institución"
+              value={institution.name}
+              onChange={onChange("name")}
+              margin="dense"
+              variant="outlined"
+              fullWidth
+              autoFocus
+              error={errorName} 
+            >
+              {Select.map((option, key) => (
+                <MenuItem key={key} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>   
             <TextField              
               variant="outlined"
               margin="dense"

@@ -29,8 +29,7 @@ const useStyles = makeStyles(theme => ({
 const HomeUser = ({ data, handleChange, values, tags}) => {
   const classes = useStyles();
 
-
-
+  
   return (
     <React.Fragment>
       <Nav  />

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles/* , createMuiTheme */ } from "@material-ui/core/styles";
+import { withStyles , createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from '@material-ui/styles';
 import { ExitToApp } from "@material-ui/icons";
 //import MenuIcon from "@material-ui/icons/Menu";
 import ToolbarMenu from "./ToolbarMenu";
@@ -9,10 +10,11 @@ import {
   IconButton,
   Toolbar,
   Typography,
-  AppBar
+  AppBar,
+  Badge
 } from "@material-ui/core";
-/* import red from '@material-ui/core/colors/red';
-import green from '@material-ui/core/colors/green'; */
+ import red from '@material-ui/core/colors/red';
+import green from '@material-ui/core/colors/green'; 
 import '../../Assets/css/Appbar.css'
 import { useCookies } from 'react-cookie';
 import {Link} from 'react-router-dom'
@@ -29,7 +31,7 @@ const styles = {
 };
 
 
-/* const theme = createMuiTheme({
+ const theme = createMuiTheme({
   palette: {
     error: red,
     secondary: green,
@@ -38,15 +40,15 @@ const styles = {
     }
   },
 });
- */
+ 
 
 function ButtonAppBar(props) {
   const { classes } = props;
-  const [cookies, removeCookie] = useCookies(['user']);
+  const [cookies, removeCookie] = useCookies(['institution']);
 
 
      let handleExit = (props)=>{
-        removeCookie('user')        
+        removeCookie('institution')        
       } 
 
   return (
@@ -55,7 +57,9 @@ function ButtonAppBar(props) {
         {/*  <IconButton color="inherit" aria-label="Menu">
           <MenuIcon />
         </IconButton> */}
-          <Link to='/home' className='title' >              
+          <Link to='/home' className='title' > 
+          <ThemeProvider theme={theme}>       
+          <Badge badgeContent={cookies.institution}  color={cookies.institution==='Carabineros'?'secondary':(cookies.institution==='Bomberos'?'error':'primary')} >             
           <Typography
             variant="h6"
             color="inherit"
@@ -63,7 +67,8 @@ function ButtonAppBar(props) {
           >
             Testigo
           </Typography>
-         
+          </Badge>     
+        </ThemeProvider>
         </Link>     
         <ToolbarMenu
           render={collapsed => {

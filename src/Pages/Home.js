@@ -1,6 +1,7 @@
 import React,{useEffect}  from 'react'
 import HomeUser from './Presentation/HomeUser'
 import Url from '../Config/url'
+import { useCookies } from 'react-cookie';
 
 
 
@@ -9,6 +10,7 @@ const Home = (props)=>{
     const [values, setValues] = React.useState({
         filter: "Contenido",
       });
+      const [cookies, setCookie] = useCookies(['institution']);
 
     document.title='Inicio'  
     function handleChange(event) {
@@ -44,7 +46,7 @@ const Home = (props)=>{
 
       console.log(info)
     return (   
-              <HomeUser data={info} handleChange={handleChange} values={values} tags={['Todos','Accidentes', 'Robos', 'Incendios']}/>            
+              <HomeUser data={info} handleChange={handleChange} values={values} tags={['Todos','Accidentes', 'Robos', 'Incendios']} badge={cookies.institution}/>            
     ); 
 }
 
