@@ -1,10 +1,11 @@
 import React,{useEffect}  from 'react'
 import HomeUser from './Presentation/HomeUser'
+import Url from '../Config/url'
 
 
 
 const Home = (props)=>{
-    const [data, setData]= React.useState([])
+    const [info, setInfo]= React.useState([])
     const [values, setValues] = React.useState({
         filter: "Contenido",
       });
@@ -29,10 +30,9 @@ const Home = (props)=>{
                'Content-Type':'application/json'
               } 
             }
-             let res = await fetch('http://localhost:3000/home/api', config)
+             let res = await fetch(`${Url}/files`, config)
              let dataFiles= await res.json()
-
-            setData(dataFiles)
+            setInfo(dataFiles)
 
 
           } catch (error) {
@@ -40,11 +40,11 @@ const Home = (props)=>{
           }
         }
          getData()
-      }, [data])
-      console.log(data)
-  
+      }, [info])
+
+      console.log(info)
     return (   
-              <HomeUser data={data} handleChange={handleChange} values={values} tags={['Todos','Accidentes', 'Robos', 'Incendios']}/>            
+              <HomeUser data={info} handleChange={handleChange} values={values} tags={['Todos','Accidentes', 'Robos', 'Incendios']}/>            
     ); 
 }
 

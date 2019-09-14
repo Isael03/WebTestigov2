@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import {
   Container,
   Divider,
@@ -36,7 +36,7 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
       <Nav  />
       <div style={{ marginTop: "2rem" }}>
         <Container>
-          <PanelCases nombre="Recientes" data={data} />
+       {/*    <PanelCases nombre="Recientes" data={data} /> */}
           <Divider />
           <Grid
             container
@@ -81,6 +81,7 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
               justify="center"
               className={classes.CardMargin}
             >
+              <Suspense  delayMs={500} fallback={<div>Loading...</div>}>
               {data.map((data, key) => (
                 <Grid item xs={12} sm={4} md={3} lg={3} key={key}>
                   <MediaCard
@@ -95,6 +96,7 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
                   />
                 </Grid>
               ))}
+              </Suspense>
             </Grid>
           </Container>
         </Container>

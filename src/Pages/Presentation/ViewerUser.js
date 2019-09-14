@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Button,
@@ -20,7 +20,7 @@ import Nav from "../../Components/Navbar/Nav";
 import ModalMap from '../../Components/ModalMap'
 
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     maxWidth: 700,
     flexGrow: 1,
@@ -32,12 +32,12 @@ export default function TextMobileStepper(props) {
   const classes = useStyles();
   const theme = useTheme();
   
-  const {open, handleOpen, handleClose, report, handldeReport, type, activeStep, handleNext, handleBack, handleStepChange, fecha, comentario, latitud, longitud, maxSteps, routes}=props
+  const {open, handleOpen, handleClose, report, handldeReport, type, activeStep, handleNext, handleBack, handleStepChange, fecha, comentario, latitud, longitud, maxSteps, routes, audio}=props
   
-
   return (
     <React.Fragment>
       <Nav {...props} />
+      <Suspense fallback={<div>Loading...</div>}>
       <div style={{ marginTop: "2rem" }}>
         <Container className={classes.root}>
           <SwipeableViews
@@ -120,12 +120,12 @@ export default function TextMobileStepper(props) {
               direction="row"
               justify="center"
               alignItems="center">
-                <Audio />
+                <Audio src={audio} />
                 <Tooltip title="Ubicación"><IconButton onClick={handleOpen}>
                   <Map />
                 </IconButton>
                 </Tooltip>
-                <Tooltip title='Reportar'>
+                <Tooltip title={report?'No reportar':'Reportar'}>
                  <IconButton onClick={handldeReport}>
                   <Flag color={report===true?'secondary':'inherit'}/>
                 </IconButton> 
@@ -136,6 +136,7 @@ export default function TextMobileStepper(props) {
             <ModalMap latitud={latitud} longitud={longitud} open={open} handleClose={handleClose}/>
         </Container>
       </div>
+      </Suspense>
     </React.Fragment>
   );
 }
