@@ -2,6 +2,7 @@ import React from 'react';
 import LoginInSide from "./Presentation/LogininSide"
 import { useCookies } from 'react-cookie';
 
+//Componente que contiene la logica de la vista del Login
 const Login = (props) => {
     const [form, setForm] = React.useState({
         name:"",
