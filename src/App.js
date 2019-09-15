@@ -7,7 +7,7 @@ import Error404 from './Pages/404'
 import Viewer from './Pages/Viewer'
 import { useCookies } from 'react-cookie';
 import Home from './Pages/Home' 
-import firebase from "firebase/app";
+
 
 
 const App = (props)=>{
@@ -17,7 +17,7 @@ const App = (props)=>{
   return( 
     <React.Fragment>
     <Switch>
-      {/* <Redirect exact from='/' to="/home" /> */}
+       <Redirect exact from='/' to="/home" /> 
       {/* Si la cookie institution NO esta definida el router redirige al usuario al login, de lo contrario al Home */}
        <Route exact path="/login" render={props => (cookies.institution==='undefined'? (
         <Login {...props} />) : (<Redirect to='/home' />))} />   

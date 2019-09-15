@@ -8,10 +8,11 @@ import {
   Select,
   MenuItem */
 } from "@material-ui/core";
-import PanelCases from "../../Components/PanelCases";
+//import PanelCases from "../../Components/PanelCases";
 import MediaCard from "../../Components/MediaCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Nav from '../../Components/Navbar/Nav'
+import { useCookies } from 'react-cookie';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 const HomeUser = ({ data, handleChange, values, tags}) => {
   const classes = useStyles();
+  const [cookies, setCookie] = useCookies(['institution']);
 
   
   return (
@@ -44,11 +46,11 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
             alignItems="flex-start"
             style={{ paddingTop: "1rem" }}
           >
-            <Grid item>
+             <Grid item>
               <Typography variant="h6" component="h3">
                 {values.filter}
               </Typography>
-            </Grid>
+            </Grid> 
             {/*<Grid item>
               <Grid container>
                  <Grid item>
@@ -80,7 +82,7 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
               justify="center"
               className={classes.CardMargin}
             >
-              <Suspense  delayMs={500} fallback={<div>Loading...</div>}>
+              <Suspense  delayMs={1000} fallback={<div>Loading...</div>}>
               {data.map((data, key) => (
                 <Grid item xs={12} sm={4} md={3} lg={3} key={key}>
                   <MediaCard

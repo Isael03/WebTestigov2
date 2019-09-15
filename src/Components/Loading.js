@@ -1,5 +1,5 @@
 import React from 'react'
-import './Styles/Loading.css'
+import '../Assets/css/Loading.css'
 
 const Loading = () => (
     <div className="loader">Loading...</div>

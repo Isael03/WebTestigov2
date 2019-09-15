@@ -1,17 +1,4 @@
 //Conexion Firebase
-/* import * as admin from 'firebase-admin'
-
-const serviceAccount = require("../../testigoii-firebase-adminsdk-fzoh1-bf2d9c30e0.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://testigoii.firebaseio.com"
-});
-
-const db = admin.database(); 
-
-
-export default db */
 
 /* apiKey: "AIzaSyDR1M5RNY93THt2mWvZArUYLX-q4XRtwJc",
 authDomain: "testigo-18a8c.firebaseapp.com",

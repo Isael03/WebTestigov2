@@ -3,7 +3,7 @@ import LoginInSide from "./Presentation/LogininSide"
 import db from '../Config/database'
 import { useCookies } from 'react-cookie';
 import bcrypt from 'bcryptjs';
-import Controller from '../functions/controllers'
+
 
 const Login = (props) => {
 

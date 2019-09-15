@@ -17,6 +17,8 @@
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
+  justify-content: center;
+  align-items: center;
 }
 .loader:before {
   width: 50%;
