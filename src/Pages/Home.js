@@ -50,6 +50,7 @@ class Home extends Component {
     if(this.state.loading){
       return <Loading/>
     }
+
     return (
         <HomeUser data={this.state.info} handleChange={this.handleChange}  values={this.state.values}  tags={['Todos','Accidentes', 'Robos', 'Incendios']}/>      
     );

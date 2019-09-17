@@ -17,9 +17,10 @@
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
-  justify-content: center;
-  align-items: center;
+
+  
 }
+
 .loader:before {
   width: 50%;
   height: 50%;
@@ -62,4 +63,41 @@
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+
+.App-logo{
+  animation: App-logo-spin infinite 3s linear;
+/*  height: 16vmin;
+  width: 16vmin; */
+  pointer-events: none;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+div.avatar {
+  /* cambia estos dos valores para definir el tamaño de tu círculo */
+  height: 100px;
+  width: 100px;
+  /* los siguientes valores son independientes del tamaño del círculo */
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: 100% auto;
+  left: 45%;
+  top: 40%;
+  position: absolute; 
+
+}
+.loader-father{
+     display: flex;
+    justify-content: center;
+    align-items: center; 
+   
 }

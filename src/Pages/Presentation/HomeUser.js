@@ -1,4 +1,4 @@
-import React, {Suspense} from "react";
+import React from "react";
 import {
   Container,
   Divider,
@@ -12,7 +12,6 @@ import {
 import MediaCard from "../../Components/MediaCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Nav from '../../Components/Navbar/Nav'
-import { useCookies } from 'react-cookie';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +28,6 @@ const useStyles = makeStyles(theme => ({
 
 const HomeUser = ({ data, handleChange, values, tags}) => {
   const classes = useStyles();
-  const [cookies, setCookie] = useCookies(['institution']);
 
   
   return (
@@ -37,8 +35,8 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
       <Nav  />
       <div style={{ marginTop: "2rem" }}>
         <Container>
-       {/*    <PanelCases nombre="Recientes" data={data} /> */}
-          <Divider />
+       {/*    <PanelCases nombre="Recientes" data={data} /> 
+          <Divider />*/}
           <Grid
             container
             direction="row"
@@ -82,7 +80,6 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
               justify="center"
               className={classes.CardMargin}
             >
-              <Suspense  delayMs={1000} fallback={<div>Loading...</div>}>
               {data.map((data, key) => (
                 <Grid item xs={12} sm={4} md={3} lg={3} key={key}>
                   <MediaCard
@@ -96,8 +93,7 @@ const HomeUser = ({ data, handleChange, values, tags}) => {
                     link={`/watch/${data.id}`}
                   />
                 </Grid>
-              ))}
-              </Suspense>
+              )).reverse()}
             </Grid>
           </Container>
         </Container>

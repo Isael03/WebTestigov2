@@ -43,6 +43,7 @@ const ImgMediaCard = props => {
 
   let CardMediaType = filename => {
     var extension = filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
+    extension=extension.slice(0,3)
     return extension === "mp4" ? "video" : "img";
   };
 

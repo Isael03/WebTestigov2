@@ -57,7 +57,6 @@ const Login = (props) => {
           if((snapshot.child(form.rut).exists()) /* && (snapshot.child(form.rut+"/Contrasena").val()).toString() === form.password */){
              Password_Verification(form.password, snapshot.child(`${form.rut}/Contrasena`).val(), form.name) 
           }else{
-            console.log('es false')
             setOpen(true) 
           }
         }).catch(err=>{

@@ -73,10 +73,8 @@ class Controller {
         }    
     }
 
-    static async onLogin (institution, rut, password){
-
-        const submit= ()=>{
-            console.log('hola')
+    static  onLogin (institution, rut, password){
+        console.log('hola')
         let connection= db.ref(`Institucion/${institution}`)
          connection.once("value").then(snapshot => {
           if((snapshot.child(rut).exists()) && (snapshot.child(rut+"/Contrasena").val()).toString() === password){
@@ -90,9 +88,9 @@ class Controller {
             console.log(err);
              return false
         });      
-        }
-       await submit()
     }
+
+     
 
     static disconnetBD(){
         let connection = db.ref('/Archivos')
