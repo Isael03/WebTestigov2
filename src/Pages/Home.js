@@ -20,7 +20,8 @@ class Home extends Component {
   }
       /**Consultar datos dependiendo la institucion guardada en la cookie, los datos obtenidos se guardan en el estado "info" */
     componentDidMount(){
-      const cookies = new Cookies();
+    
+     const cookies = new Cookies();
       try {
         const connection = db.ref("/Archivos/");
          connection
@@ -37,7 +38,7 @@ class Home extends Component {
           }); 
       } catch (error) {
         console.log(error);     
-      } 
+      }  
     }  
 
     /**Se desconecta el servicio de la base de datos */
