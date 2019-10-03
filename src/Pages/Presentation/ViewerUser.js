@@ -15,10 +15,10 @@ import Video from "../../Components/Video";
 import Audio from "../../Components/Audio";
 import { Map, Flag } from "@material-ui/icons";
 import SwipeableViews from "react-swipeable-views";
-import "../../Assets/css/Player.css";
 import Nav from "../../Components/Navbar/Nav";
 import ModalMap from "../../Components/ModalMap";
 import PropTypes from "prop-types";
+import ImageCase from '../../Components/image'
 
 
 const useStyles = makeStyles(() => ({
@@ -26,13 +26,21 @@ const useStyles = makeStyles(() => ({
     maxWidth: 710,
     flexGrow: 1,
     overflow: "hidden"
+  },
+  modal: {
+    height: "85vh",
+    maxWidth: "60vw",
+    margin: "auto"
+  }, 
+  imageModal:{
+    maxWidth:"auto"
   }
 }));
 
 export default function TextMobileStepper(props) {
   const classes = useStyles();
   const theme = useTheme();
-
+  
   const {
     open,
     handleOpen,
@@ -50,12 +58,12 @@ export default function TextMobileStepper(props) {
     longitud,
     maxSteps,
     routes,
-    audio
+    audio,
   } = props;
  
   return (
     <React.Fragment>
-      <Nav {...props} />
+      <Nav {...props}/>
       <Suspense fallback={<div>Loading...</div>}>
         <div style={{ marginTop: "2rem" }}>
           <Container className={classes.root}>
@@ -71,15 +79,7 @@ export default function TextMobileStepper(props) {
                     type(step) === "video" ? (
                       <Video route={step} alt="video"/>
                     ) : (
-                       <div className="player-wrapper">
-                        <img
-                        src={step}
-                        alt="Imagen"
-                        className="react-player"
-                         width="100%"
-                        height="100%" 
-                      />                       
-                       </div> 
+                      <ImageCase step={step} clase={classes.modal}/>                     
                     )
                   ) : null}
                 </div>
@@ -164,6 +164,7 @@ export default function TextMobileStepper(props) {
             />
           </Container>
         </div>
+        
       </Suspense>
     </React.Fragment>
   );

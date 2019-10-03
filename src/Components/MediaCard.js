@@ -29,7 +29,6 @@ const ImgMediaCard = props => {
  
 
   let handleClick = () => {
-    /* setTimeout(()=>(setSee(true)), 3000) */
     setSee(true)
   };
 

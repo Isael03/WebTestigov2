@@ -2,7 +2,7 @@ import React, { /* useEffect, */ Component } from "react";
 import ViewerUser from "./Presentation/ViewerUser";
 //import Url from "../Config/url";
 import db from "../Config/database";
-import Loading from '../Components/Loading'
+import Loading from "../Components/Loading";
 
 class Viewer extends Component {
   constructor(props) {
@@ -10,8 +10,8 @@ class Viewer extends Component {
     this.state = {
       data: [],
       open: false,
-      activeStep: 0, 
-      loading:true
+      activeStep: 0,
+      loading: true
     };
 
     this.handleClose = this.handleClose.bind(this);
@@ -21,32 +21,31 @@ class Viewer extends Component {
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
     this.handleStepChange = this.handleStepChange.bind(this);
-    this.getData=this.getData.bind(this)
+    this.getData = this.getData.bind(this);
   }
 
-  getData(){
-      try {
+  getData() {
+    try {
       const { match } = this.props;
       const id = parseInt(match.params.id);
       let connection = db.ref("/Archivos");
-        //Enviar datos como array
-        connection
-          .orderByChild("id")
-          .equalTo(id)
-          .once("value", snapshot => {
-            let list = snapshot.val();
-            this.setState({
-              data: Object.values(list),
-              loading:false
-            });
+      //Enviar datos como array
+      connection
+        .orderByChild("id")
+        .equalTo(id)
+        .once("value", snapshot => {
+          let list = snapshot.val();
+          this.setState({
+            data: Object.values(list),
+            loading: false
           });
-      } catch (error) {
-        console.log(error);
-      }
-    };
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-
-  componentDidMount(){
+  componentDidMount() {
     try {
       const { match } = this.props;
       const id = parseInt(match.params.id);
@@ -70,37 +69,11 @@ class Viewer extends Component {
           }
         });
     } catch (error) {
-      console.log(error)
-    }
-   
-     this.getData();  
-  }  
-     
-  
-
-   /* componentDidUpdate(){
-    const { match } = this.props;
-    try {
-      const id = parseInt(match.params.id);
-      let connection = db.ref("/Archivos");
-
-      //Enviar datos como array
-      connection
-        .orderByChild("id")
-        .equalTo(id)
-        .once("value", snapshot => {
-          let list = snapshot.val();
-          this.setState({
-            data: Object.values(list),
-            loading:false
-            //report:snapshot.val().Reportado
-          });
-        });
-    } catch (error) {
       console.log(error);
     }
-  } */
-  
+
+    this.getData();
+  }
 
   componentWillUnmount() {
     db.ref("/Archivos/").off();
@@ -119,7 +92,7 @@ class Viewer extends Component {
 
   handleReport() {
     const { match } = this.props;
-   
+
     try {
       const id = parseInt(match.params.id);
       let connection = db.ref("/Archivos");
@@ -135,18 +108,18 @@ class Viewer extends Component {
             },
             error => {
               console.log(error);
-            }               
+            }
           );
-          this.getData()
+          this.getData();
         });
     } catch (error) {
       console.log(error);
-    } 
+    }
   }
 
   type(filename) {
     var extension = filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
-    extension=extension.slice(0,3)
+    extension = extension.slice(0, 3);
     return extension === "mp4" ? "video" : "img";
   }
 
@@ -170,12 +143,10 @@ class Viewer extends Component {
   render() {
     const { open, activeStep, data, loading } = this.state;
 
-    if(loading){
-      return <Loading/>
+    if (loading) {
+      return <Loading />;
     }
-    
-   
- 
+
     return data.map((data, i) => (
       <ViewerUser
         open={open}

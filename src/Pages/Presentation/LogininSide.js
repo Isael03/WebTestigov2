@@ -56,7 +56,7 @@ const SignInSide = props => {
               id="institution"
               required
               select
-              label="Seleccione Institución"
+              label="Empresa"
               value={institution.name}
               onChange={onChange("name")}
               margin="dense"
@@ -65,11 +65,20 @@ const SignInSide = props => {
               autoFocus
               error={errorName} 
             >
-              {Select.map((option, key) => (
+              {/*{Select.map((option, key) => (
                 <MenuItem key={key} value={option}>
                   {option}
                 </MenuItem>
-              ))}
+              ))} */}
+               <MenuItem  value="Carabineros">
+                  Empresa 1
+                </MenuItem>
+                <MenuItem  value="Ambulancias">
+                  Empresa 2
+                </MenuItem>
+                <MenuItem value="Bomberos">
+                  Empresa 3
+                </MenuItem>
             </TextField>   
             <TextField              
               variant="outlined"

@@ -19,6 +19,9 @@ import '../../Assets/css/Appbar.css'
 import { useCookies } from 'react-cookie';
 import {Link} from 'react-router-dom'
 
+
+
+
 const styles = {
   menuButton: {
     marginLeft: -12,
@@ -43,23 +46,25 @@ const styles = {
  
 
 function ButtonAppBar(props) {
-  const { classes } = props;
+  const { classes  } = props;
   const [cookies, removeCookie] = useCookies(['institution']);
 
 
      let handleExit = (props)=>{
         removeCookie('institution')        
       } 
-
+ 
   return (
     <AppBar position="sticky" className={classes.nabvar}>
       <Toolbar>
         {/*  <IconButton color="inherit" aria-label="Menu">
           <MenuIcon />
         </IconButton> */}
-          <Link to='/home' className='title' > 
+        <Link to='/home' className='title' >  
           <ThemeProvider theme={theme}>       
-          <Badge badgeContent={cookies.institution}  color={cookies.institution==='Carabineros'?'secondary':(cookies.institution==='Bomberos'?'error':'primary')} >             
+          <Badge 
+          badgeContent={cookies.institution==='Carabineros'?'Empresa 1':(cookies.institution==='Bomberos'?'Empresa 3':'Empresa 2')}  
+          color={cookies.institution==='Carabineros'?'secondary':(cookies.institution==='Bomberos'?'error':'primary')} >        
           <Typography
             variant="h6"
             color="inherit"
@@ -67,9 +72,9 @@ function ButtonAppBar(props) {
           >
             Testigo
           </Typography>
-          </Badge>     
+          </Badge>  
         </ThemeProvider>
-        </Link>     
+       </Link>   
         <ToolbarMenu
           render={collapsed => {
             return collapsed
