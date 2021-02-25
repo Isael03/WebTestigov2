@@ -14,7 +14,7 @@ import 'firebase/database'
     appId: "1:960918105160:web:b1eef821d30b3696d27c7d"
   }; */
 /**BD oficial */
-   const config = {
+   const config = /*{
     apiKey: "AIzaSyDR1M5RNY93THt2mWvZArUYLX-q4XRtwJc",
     authDomain: "testigo-18a8c.firebaseapp.com",
     databaseURL: "https://testigo-18a8c.firebaseio.com",
@@ -22,7 +22,7 @@ import 'firebase/database'
     storageBucket: "testigo-18a8c.appspot.com",
     messagingSenderId: "652448395046",
     appId: "1:652448395046:web:742327bbf04297c9"
-  }; 
+  }; */
   
   firebase.initializeApp(config);
 
